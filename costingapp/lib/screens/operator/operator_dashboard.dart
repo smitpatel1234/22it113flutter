@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
+import 'material_scanning_screen.dart';
 
 class OperatorDashboard extends StatefulWidget {
   const OperatorDashboard({Key? key}) : super(key: key);
@@ -13,7 +14,7 @@ class _OperatorDashboardState extends State<OperatorDashboard> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const ScanningPage(),
+    const MaterialScanningScreen(),
     const LoggingPage(),
     const TasksPage(),
   ];

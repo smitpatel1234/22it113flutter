@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../providers/auth_provider.dart';
+import 'materials_management.dart';
+import 'user_management.dart';
+import 'process_management.dart';
+import 'analytics_screen.dart';
 
 class AdminDashboard extends StatefulWidget {
   const AdminDashboard({Key? key}) : super(key: key);
@@ -12,11 +16,12 @@ class AdminDashboard extends StatefulWidget {
 class _AdminDashboardState extends State<AdminDashboard> {
   int _selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    const DashboardHome(),
-    const MaterialsManagement(),
-    const UsersManagement(),
-    const ReportsAnalytics(),
+  final List<Widget> _pages = const [
+    DashboardHome(),
+    MaterialsManagement(),
+    ProcessManagement(),
+    UserManagement(),
+    AnalyticsScreen(),
   ];
 
   @override
@@ -56,12 +61,16 @@ class _AdminDashboardState extends State<AdminDashboard> {
             label: Text('Materials'),
           ),
           NavigationDrawerDestination(
+            icon: Icon(Icons.precision_manufacturing),
+            label: Text('Processes'),
+          ),
+          NavigationDrawerDestination(
             icon: Icon(Icons.people),
             label: Text('Users'),
           ),
           NavigationDrawerDestination(
             icon: Icon(Icons.bar_chart),
-            label: Text('Reports & Analytics'),
+            label: Text('Analytics'),
           ),
           Divider(),
           Padding(
@@ -123,9 +132,9 @@ class DashboardHome extends StatelessWidget {
                 ),
                 _buildDashboardCard(
                   context,
-                  title: 'Today\'s Logs',
-                  value: '156',
-                  icon: Icons.edit_note,
+                  title: 'Processes',
+                  value: '24',
+                  icon: Icons.precision_manufacturing,
                   color: Colors.purple,
                 ),
               ],
@@ -182,35 +191,5 @@ class DashboardHome extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-// Materials Management Placeholder
-class MaterialsManagement extends StatelessWidget {
-  const MaterialsManagement({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Materials Management Coming Soon'));
-  }
-}
-
-// Users Management Placeholder
-class UsersManagement extends StatelessWidget {
-  const UsersManagement({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Users Management Coming Soon'));
-  }
-}
-
-// Reports & Analytics Placeholder
-class ReportsAnalytics extends StatelessWidget {
-  const ReportsAnalytics({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(child: Text('Reports & Analytics Coming Soon'));
   }
 }
